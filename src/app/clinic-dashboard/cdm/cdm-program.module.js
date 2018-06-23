@@ -11,7 +11,7 @@ var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
 var material_1 = require("@angular/material");
 var cdm_program_routes_1 = require("./cdm-program.routes");
-var date_time_picker_1 = require("ng2-openmrs-formentry/dist/components/date-time-picker");
+var date_time_picker_1 = require("ngx-openmrs-formentry");
 var etl_api_module_1 = require("../../etl-api/etl-api.module");
 var data_lists_module_1 = require("../../shared/data-lists/data-lists.module");
 var CdmProgramModule = (function () {
@@ -26,7 +26,7 @@ var CdmProgramModule = (function () {
                 data_lists_module_1.DataListsModule,
                 common_1.CommonModule,
                 forms_1.FormsModule,
-                material_1.MdTabsModule,
+                material_1.MatTabsModule,
                 material_1.MdProgressSpinnerModule,
                 material_1.MdProgressBarModule,
                 material_1.MaterialModule

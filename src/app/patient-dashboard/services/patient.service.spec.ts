@@ -5,7 +5,7 @@ import { PatientResourceService } from '../../openmrs-api/patient-resource.servi
 import { Patient } from '../../models/patient.model';
 import { FakePatientResourceService } from '../../openmrs-api/fake-patient-resource';
 import { PatientService } from './patient.service';
-import { BehaviorSubject } from 'rxjs/Rx';
+import { BehaviorSubject } from 'rxjs';
 import {
   ProgramEnrollmentResourceService
 }

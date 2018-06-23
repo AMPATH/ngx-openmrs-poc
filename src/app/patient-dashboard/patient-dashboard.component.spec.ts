@@ -19,7 +19,7 @@ import {
   ProgramEnrollmentResourceService
 }
   from '../openmrs-api/program-enrollment-resource.service';
-import { ToastrConfig, ToastrService, Overlay, OverlayContainer } from 'ngx-toastr';
+import { ToastrConfig, ToastrService, Overlay, OverlayContainer, ToastrModule } from 'ngx-toastr';
 import { EncounterResourceService } from '../openmrs-api/encounter-resource.service';
 import { PatientProgramService } from './programs/patient-programs.service';
 import { RoutesProviderService } from '../shared/dynamic-route/route-config-provider.service';
@@ -71,15 +71,16 @@ describe('Component: PatientDashboard', () => {
           provide: ActivatedRoute,
           useClass: MockActivatedRoute
         }, DynamicRoutesService,
-        {
-          provide: ToastrConfig, useFactory: () => {
-            return new ToastrConfigMock();
-          }, deps: []
-        },
+        // {
+        //   provide: ToastrConfig, useFactory: () => {
+        //     return new ToastrConfigMock();
+        //   }, deps: []
+        // },
         ToastrService,
         Overlay,
         OverlayContainer
-      ]
+      ],
+      imports: [ToastrModule.forRoot()]
     });
   });
   it('should create an instance', () => {

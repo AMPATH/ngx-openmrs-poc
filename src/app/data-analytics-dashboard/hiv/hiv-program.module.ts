@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { MdProgressSpinnerModule, MdProgressBarModule, MdTabsModule , MdSlideToggleModule
-} from '@angular/material';
 
 import { oncologyProgramRouting } from './oncology-program.routes';
 import {
   DateTimePickerModule
-} from 'ng2-openmrs-formentry/dist/components/date-time-picker';
+} from 'ngx-openmrs-formentry';
 import { DataListsModule } from '../../shared/data-lists/data-lists.module';
 import { AdminDashboardClinicFlowComponent } from './clinic-flow/admin-dashboard-clinic-flow';
 import { HivCareLibModule } from '../../hiv-care-lib/hiv-care-lib.module';
@@ -43,11 +41,7 @@ import { DataEntryStatisticsModule } from
     CommonModule,
     FormsModule,
     RouterModule,
-    MdTabsModule,
     DataEntryStatisticsModule,
-    MdProgressSpinnerModule,
-    MdProgressBarModule,
-    MdSlideToggleModule,
     PatientProgramEnrollmentModule
   ],
   exports: [

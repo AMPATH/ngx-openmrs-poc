@@ -37,10 +37,10 @@ export class EnrollmentManagerComponent implements OnInit, OnDestroy {
   public availablePrograms: any[];
   public availableProgramsOptions: any[];
   public locationUuids: any;
+  public state: any;
   private location: any;
   private stateChangeRequiresModal: boolean = false;
   private program: any;
-  private state: any;
   private configs: any[];
   private confirmMessage: BehaviorSubject<any> = new BehaviorSubject(null);
   private subscription: Subscription;

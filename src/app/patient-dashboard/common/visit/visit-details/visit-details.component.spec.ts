@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import * as moment from 'moment';
-import { BusyModule, BusyConfig } from 'angular2-busy';
+import { NgBusyModule, BusyConfig } from 'ng-busy';
 import { DialogModule } from 'primeng/primeng';
 import { SelectModule } from 'angular2-select';
 import { CacheService } from 'ionic-cache';
@@ -102,7 +102,7 @@ describe('VisitDetailsComponent: ', () => {
         CacheService
       ],
       imports: [
-        BusyModule,
+        NgBusyModule,
         UserDefaultPropertiesModule,
         DialogModule,
         FormsModule,

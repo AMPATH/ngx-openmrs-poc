@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
-import { ReplaySubject, Observable } from 'rxjs/Rx';
+import { ReplaySubject, Observable } from 'rxjs';
 import * as _ from 'lodash';
 
 import { LocalStorageService } from '../../../utils/local-storage.service';

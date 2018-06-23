@@ -7,7 +7,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { PatientResourceService } from '../../../openmrs-api/patient-resource.service';
 import { PatientMonthlyStatusComponent } from './patient-monthly-status.component';
 import { PatientCareStatusResourceService } from

@@ -12,7 +12,7 @@ import { FakeAppFeatureAnalytics } from '../../shared/app-analytics/app-feature-
 import { ProgramService } from './program.service';
 import { AppSettingsService } from '../../app-settings';
 import { LocalStorageService } from '../../utils/local-storage.service';
-import { BusyModule, BusyConfig } from 'angular2-busy';
+import { NgBusyModule, BusyConfig } from 'ng-busy';
 import {
   AccordionModule, DataTableModule, SharedModule, TabViewModule,
   GrowlModule, PanelModule, ConfirmDialogModule, ConfirmationService,
@@ -94,7 +94,7 @@ describe('Component: ProgramsComponent', () => {
 
         }],
       declarations: [ProgramsComponent, HivProgramSnapshotComponent, ZeroVlPipe],
-      imports: [BusyModule, FormsModule,
+      imports: [NgBusyModule, FormsModule,
         DialogModule,
         CalendarModule, BrowserAnimationsModule]
     });

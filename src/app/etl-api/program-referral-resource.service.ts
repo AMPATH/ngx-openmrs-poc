@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 
-import { AppSettingsService } from '../app-settings';
-import { Observable } from 'rxjs/Rx';
+import { AppSettingsService } from '../app-settings/app-settings.service';
+import { Observable , from} from 'rxjs';
 
 @Injectable()
 export class ProgramReferralResourceService {
@@ -14,7 +14,7 @@ export class ProgramReferralResourceService {
   }
   public saveReferralEncounter(payload): Observable<any> {
     if (!payload) {
-      return Observable.from(null);
+      return from(null);
     }
 
     let headers = new Headers({ 'Content-Type': 'application/json' });

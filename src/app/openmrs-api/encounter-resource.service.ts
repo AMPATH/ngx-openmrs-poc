@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AppSettingsService } from '../app-settings';
+import { AppSettingsService } from '../app-settings/app-settings.service';
 import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs';
+import { flatMap } from 'rxjs/operators';
 
 @Injectable()
 export class EncounterResourceService {
@@ -30,7 +31,7 @@ export class EncounterResourceService {
       return this.http.get(url, {
         search: params
       }).map((response: Response) =>
-        response.json()).flatMap((encounters: any) => {
+        response.json()).pipe(flatMap((encounters: any) => {
 
         if (encounters.results.length >= 500) {
           params.set('startIndex', '500');
@@ -47,7 +48,7 @@ export class EncounterResourceService {
           return Observable.of(encounters.results);
         }
 
-      });
+      }));
     }
     public getEncounterByUuid(uuid: string): Observable<any> {
         if (!uuid) {

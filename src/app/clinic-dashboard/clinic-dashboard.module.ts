@@ -6,7 +6,6 @@ import { Angulartics2Module } from 'angulartics2';
 import { ChartModule } from 'angular2-highcharts';
 import { CalendarModule } from 'angular-calendar';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
-import { MdTabsModule, MdSlideToggleModule } from '@angular/material';
 import { NgamrsSharedModule } from '../shared/ngamrs-shared.module';
 import { OpenmrsApi } from '../openmrs-api/openmrs-api.module';
 import { ClinicDashboardCacheService } from './services/clinic-dashboard-cache.service';
@@ -48,8 +47,8 @@ import { AgGridModule } from 'ag-grid-angular/main';
 import { DataListsModule } from '../shared/data-lists/data-lists.module';
 import { ClinicLabOrdersComponent } from './clinic-lab-orders/clinic-lab-orders.component';
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
-import { DateTimePickerModule } from 'ng2-openmrs-formentry/dist/components/date-time-picker';
-import { Ng2PaginationModule } from 'ng2-pagination';
+import { DateTimePickerModule } from 'ngx-openmrs-formentry';
+
 
 import {
   HivCareIndicatorDefComponent
@@ -97,7 +96,6 @@ import {
 } from './patient-status-change-visualization/patient-status-data-list-cell.component';
 import { PatientStatusChangeListComponent } from
   './patient-status-change-visualization/patient-status-change-list.component';
-import { MdProgressSpinnerModule, MdProgressBarModule } from '@angular/material';
 import { SessionStorageService } from '../utils/session-storage.service';
 import { HttpClient } from '../shared/services/http-client.service';
 import {
@@ -169,11 +167,9 @@ import {
     FormsModule,
     OpenmrsApi,
     EtlApi,
-    Angulartics2Module.forChild(),
     NgamrsSharedModule,
     ChartModule,
     CalendarModule.forRoot(),
-    MdTabsModule,
     RouterModule.forChild(routes),
     DateTimePickerModule,
     DataListsModule,
@@ -186,20 +182,13 @@ import {
     HivProgramModule,
     OpenmrsApi,
     EtlApi,
-    Angulartics2Module.forChild(),
     NgamrsSharedModule,
     CalendarModule.forRoot(),
     AgGridModule.withComponents([]),
-    NgxMyDatePickerModule,
-    MdTabsModule,
-    MdProgressSpinnerModule,
-    MdProgressBarModule,
     CacheModule,
-    MdSlideToggleModule,
     ProgramVisitEncounterSearchModule,
     DepartmentProgramFilterModule,
     PatientProgramEnrollmentModule,
-    Ng2PaginationModule,
     PatientReferralProgramModule
   ],
   providers: [

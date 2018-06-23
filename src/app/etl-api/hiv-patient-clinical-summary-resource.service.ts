@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, URLSearchParams } from '@angular/http';
-import { AppSettingsService } from '../app-settings';
+import { AppSettingsService } from '../app-settings/app-settings.service';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -17,7 +17,9 @@ export class HivPatientClinicalSummaryResourceService {
     params.set('startIndex', 0 as any as string);
     params.set('limit', 10 as any as string);
 
-    return this.http.get(api, {search: params}).map((data) => data.json());
+    return this.http.get(api, {search: params}).map((data) => {
+      return data.json();
+    });
   }
 
 }

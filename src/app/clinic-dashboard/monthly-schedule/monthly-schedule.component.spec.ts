@@ -10,7 +10,7 @@ import { MonthlyScheduleComponent } from './monthly-schedule.component';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Http, Response, Headers, BaseRequestOptions, ResponseOptions } from '@angular/http';
 import { MonthlyScheduleResourceService } from '../../etl-api/monthly-scheduled-resource.service';
-import { BusyModule } from 'angular2-busy';
+import { NgBusyModule } from 'ng-busy';
 import { CalendarModule, CalendarDateFormatter } from 'angular-calendar';
 import { ClinicDashboardCacheService } from '../services/clinic-dashboard-cache.service';
 import { AppSettingsService } from '../../app-settings';
@@ -246,7 +246,7 @@ describe('MonthlyScheduleComponent', () => {
 
   beforeEach( async(() => {
     TestBed.configureTestingModule({
-      imports: [BusyModule, CalendarModule.forRoot(),  SelectModule,
+      imports: [NgBusyModule, CalendarModule.forRoot(),  SelectModule,
        BrowserAnimationsModule, CacheModule, AngularMultiSelectModule ,
        FormsModule],
       declarations: [MonthlyScheduleComponent, ProgramVisitEncounterSearchComponent],

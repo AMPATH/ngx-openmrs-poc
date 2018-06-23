@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, Subject, Observable } from 'rxjs/Rx';
+import { ReplaySubject, Subject, Observable } from 'rxjs';
 import {
   ProgramEnrollmentResourceService
 } from

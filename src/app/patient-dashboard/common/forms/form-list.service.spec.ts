@@ -5,7 +5,7 @@ import {
     ResponseOptions, RequestMethod, ResponseType
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 
 import { FormListService } from './form-list.service';
 import { FormsResourceService } from '../../../openmrs-api/forms-resource.service';

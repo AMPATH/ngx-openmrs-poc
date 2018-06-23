@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, fakeAsync, inject } from '@angular/core/testing';
-import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { FormDataSourceService } from './form-data-source.service';
 import { ProviderResourceService } from '../../../openmrs-api/provider-resource.service';
 import { FakeProviderResourceService } from '../../../openmrs-api/provider-resource.service.mock';

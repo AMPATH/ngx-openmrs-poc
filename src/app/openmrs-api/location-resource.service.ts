@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
-import { ReplaySubject, Observable } from 'rxjs/Rx';
+import { ReplaySubject, Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
-import { AppSettingsService } from '../app-settings';
+import { AppSettingsService } from '../app-settings/app-settings.service';
 import { DataCacheService } from '../shared/services/data-cache.service';
 @Injectable()
 export class LocationResourceService {

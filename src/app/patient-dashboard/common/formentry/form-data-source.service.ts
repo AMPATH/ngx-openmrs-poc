@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProviderResourceService } from '../../../openmrs-api/provider-resource.service';
-import { Observable, BehaviorSubject, Subject } from 'rxjs/Rx';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { Provider } from '../../../models/provider.model';
 import { Patient } from '../../../models/patient.model';
 import { PatientService } from '../../services/patient.service';

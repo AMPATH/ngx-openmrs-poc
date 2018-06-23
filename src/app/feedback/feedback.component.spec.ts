@@ -5,10 +5,10 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Http, Response, Headers, BaseRequestOptions, ResponseOptions } from '@angular/http';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { FeedBackService } from './feedback.service';
 import { FeedBackComponent } from './feedback.component';
-import { BusyModule, BusyConfig } from 'angular2-busy';
+import { NgBusyModule, BusyConfig } from 'ng-busy';
 import { UserService } from '../openmrs-api/user.service';
 import { UserDefaultPropertiesService }
     from '../user-default-properties/user-default-properties.service';
@@ -56,7 +56,7 @@ describe('FeedBackComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule, BusyModule],
+            imports: [FormsModule, NgBusyModule],
             declarations: [FeedBackComponent]
         }).overrideComponent(FeedBackComponent, {
             set: {

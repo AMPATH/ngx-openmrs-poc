@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams } from '@angular/http';
 
-import { AppSettingsService } from '../app-settings';
+import { AppSettingsService } from '../app-settings/app-settings.service';
 
 import { DataCacheService } from '../shared/services/data-cache.service';
 import { ClinicFlowResource } from './clinic-flow-resource-interface';

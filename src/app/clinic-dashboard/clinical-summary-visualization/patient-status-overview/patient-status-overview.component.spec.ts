@@ -2,7 +2,7 @@
  /* tslint:disable:no-unused-variable */
 
  import { TestBed, async, fakeAsync, ComponentFixture, tick } from '@angular/core/testing';
- import { Observable } from 'rxjs/Rx';
+ import { Observable } from 'rxjs';
  import { MockBackend, MockConnection } from '@angular/http/testing';
  import { Http, Response, Headers, BaseRequestOptions, ResponseOptions } from '@angular/http';
  import { ClinicDashboardCacheService } from '../../services/clinic-dashboard-cache.service';

@@ -14,10 +14,6 @@ import { PatientCreationService } from './patient-creation.service';
 import { Observable } from 'rxjs';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import {
-  MdSnackBar, OVERLAY_PROVIDERS, ScrollStrategyOptions, ScrollDispatcher, Platform, LiveAnnouncer
-
-} from '@angular/material';
-import {
   PatientCreationResourceService
 } from '../../openmrs-api/patient-creation-resource.service';
 import {
@@ -35,6 +31,7 @@ import { DataCacheService } from '../../shared/services/data-cache.service';
 import { CacheService } from 'ionic-cache';
 import { Storage } from '@ionic/storage';
 import { ModalModule } from 'ngx-bootstrap';
+import { NgamrsSharedModule } from '../../shared/ngamrs-shared.module';
 
 describe('Component: Patient Creation Unit Tests', () => {
 
@@ -42,6 +39,7 @@ describe('Component: Patient Creation Unit Tests', () => {
   beforeEach( async(() => {
     TestBed.configureTestingModule({
       imports: [
+        NgamrsSharedModule,
         ModalModule.forRoot()
       ],
       providers: [
@@ -71,13 +69,7 @@ describe('Component: Patient Creation Unit Tests', () => {
         AppSettingsService,
         LocalStorageService,
         PatientCreationComponent,
-        MdSnackBar,
-        BsModalService,
-        OVERLAY_PROVIDERS,
-        ScrollStrategyOptions,
-        ScrollDispatcher,
-        Platform,
-        LiveAnnouncer,
+       NgamrsSharedModule,
         PatientCreationService,
         PatientCreationResourceService,
         PatientIdentifierTypeResService,

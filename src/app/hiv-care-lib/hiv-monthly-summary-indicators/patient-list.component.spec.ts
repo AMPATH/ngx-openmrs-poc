@@ -11,7 +11,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { NgamrsSharedModule } from '../../shared/ngamrs-shared.module';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HivMonthlySummaryIndicatorsPatientListComponent } from './patient-list.component';
-import { DateTimePickerModule } from 'ng2-openmrs-formentry/dist/components/date-time-picker';
+import { DateTimePickerModule } from 'ngx-openmrs-formentry';
 import {
   HivMonthlySummaryIndicatorsResourceService
 } from '../../etl-api/hiv-monthly-summary-indicators-resource.service';

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 
 import { PatientService } from '../../services/patient.service';
 import { ProgramEnrollment } from '../../models/program-enrollment.model';
@@ -249,7 +250,7 @@ export class ProgramsTransferCareFormWizardComponent implements OnInit, OnDestro
     _.each(programs, (program: any) => {
       programBatch.push(this.transferCareService.attachEncounterForms(program, configs));
     });
-    return Observable.forkJoin(programBatch);
+    return forkJoin(programBatch);
   }
 
   private _completeProcess() {

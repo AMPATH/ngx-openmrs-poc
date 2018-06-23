@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AppSettingsService } from '../app-settings';
+import { AppSettingsService } from '../app-settings/app-settings.service';
 import { Http, Response, Headers, URLSearchParams } from '@angular/http';
-import { Observable, Subject , ReplaySubject } from 'rxjs/Rx';
+import { Observable, Subject , ReplaySubject } from 'rxjs';
 import { PersonResourceService } from './person-resource.service';
 import * as _ from 'lodash';
 

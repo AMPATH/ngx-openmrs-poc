@@ -13,7 +13,7 @@ import { MockBackend } from '@angular/http/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
-import { BusyModule, BusyConfig } from 'angular2-busy';
+import { NgBusyModule, BusyConfig } from 'ng-busy';
 import * as moment from 'moment';
 import { CacheService } from 'ionic-cache';
 
@@ -131,7 +131,7 @@ describe('Component: Visit', () => {
         }
       ],
       imports: [
-        BusyModule,
+        NgBusyModule,
         UserDefaultPropertiesModule,
         DialogModule,
         FormsModule,

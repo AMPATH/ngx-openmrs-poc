@@ -5,7 +5,7 @@ import { Http, BaseRequestOptions, Response, ResponseOptions, HttpModule } from 
 import { FormSubmissionService } from './form-submission.service';
 import {
   EncounterAdapter, PersonAttribuAdapter, OrderValueAdapter, ObsValueAdapter, ObsAdapterHelper, Form
-} from 'ng2-openmrs-formentry';
+} from 'ngx-openmrs-formentry';
 import { AppSettingsService } from '../../../app-settings';
 import { EncounterResourceService } from '../../../openmrs-api/encounter-resource.service';
 import { PersonResourceService } from '../../../openmrs-api/person-resource.service';
@@ -15,7 +15,7 @@ import { ConceptResourceService } from '../../../openmrs-api/concept-resource.se
 import { ProviderResourceService } from '../../../openmrs-api/provider-resource.service';
 import { LocationResourceService } from '../../../openmrs-api/location-resource.service';
 import { ErrorLogResourceService } from '../../../etl-api/error-log-resource.service';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs';
 import { CacheModule, CacheService } from 'ionic-cache';
 import { DataCacheService } from '../../../shared/services/data-cache.service';
 

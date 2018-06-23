@@ -6,7 +6,7 @@ import {
   Router
 } from '@angular/router';
 import { Location } from '@angular/common';
-import { BehaviorSubject, Observable } from 'rxjs/Rx';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { SpyLocation } from '@angular/common/testing';
 import { FormentryComponent } from './formentry.component';
 import { AppFeatureAnalytics } from '../../../shared/app-analytics/app-feature-analytics.service';
@@ -28,7 +28,7 @@ import {
 import {
   FormFactory, EncounterAdapter, OrderValueAdapter, Form,
   ObsValueAdapter, PersonAttribuAdapter, FormSchemaCompiler, ObsAdapterHelper
-} from 'ng2-openmrs-formentry';
+} from 'ngx-openmrs-formentry';
 import { FakeFormSchemaCompiler } from './mock/form-schema-compiler.service.mock';
 import { EncounterResourceService } from '../../../openmrs-api/encounter-resource.service';
 import { FormCreationDataResolverService } from './form-creation-data-resolver.service';
@@ -46,7 +46,7 @@ import { FormSubmissionService } from './form-submission.service';
 import { PersonResourceService } from '../../../openmrs-api/person-resource.service';
 import { Patient } from '../../../models/patient.model';
 import { FormDataSourceService } from './form-data-source.service';
-import { DataSources } from 'ng2-openmrs-formentry/dist/form-entry/data-sources/data-sources';
+import { DataSources } from 'ngx-openmrs-formentry';
 import { CacheModule, CacheService } from 'ionic-cache';
 import { ProviderResourceService } from '../../../openmrs-api/provider-resource.service';
 import { LocationResourceService } from '../../../openmrs-api/location-resource.service';

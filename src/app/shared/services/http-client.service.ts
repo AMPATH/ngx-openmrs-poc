@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 import { SessionStorageService } from '../../utils/session-storage.service';
 import { Constants } from '../../utils/constants';
+import { Injectable } from '@angular/core';
+@Injectable()
 export class HttpClient extends Http {
   constructor(backend: ConnectionBackend, defaultOptions: RequestOptions,
               private _router: Router, private sessionStorageService: SessionStorageService) {

@@ -1,6 +1,6 @@
 # NgxOpenmrsPoc
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
+This is the point of care system used by Ampath Clinics. It should be compatible with most openmrs versions but it is tested against platform 2.0.2 with the rest module. It also requires https://github.com/AMPATH/etl-rest-server for all features to work properly.
 
 ## Development server
 
@@ -23,5 +23,3 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

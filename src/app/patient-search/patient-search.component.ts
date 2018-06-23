@@ -26,7 +26,7 @@ export class PatientSearchComponent implements OnInit, OnDestroy {
   public patients: Patient[];
   public referred: any[] = [];
   public referredBack: any[] = [];
-  public errors: any[];
+  public errors: any[] = [];
   public isResetButton: boolean = true;
   public totalPatients: number;
   public isLoading: boolean = false;

@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MdProgressSpinnerModule, MdProgressBarModule, MdTabsModule
-} from '@angular/material';
 import {
     DateTimePickerModule
-} from 'ng2-openmrs-formentry/dist/components/date-time-picker';
+} from 'ngx-openmrs-formentry';
 
 import { Moh731ReportComponent } from './moh-731/moh-731-report.component';
 import { clinicDashboardHivRouting } from './hiv-program.routes';
@@ -31,10 +29,7 @@ import { HivCareComparativeComponent
         EtlApi,
         DataListsModule,
         CommonModule,
-        FormsModule,
-        MdTabsModule,
-        MdProgressSpinnerModule,
-        MdProgressBarModule
+        FormsModule
     ],
     exports: [HivSummaryIndicatorComponent,
       DailyScheduleClinicFlowComponent,

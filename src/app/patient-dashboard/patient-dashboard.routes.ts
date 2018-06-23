@@ -22,18 +22,23 @@ import {
 } from '../patient-search/patient-search-container.component';
 import { TodayVisitsComponent } from './common/visit/today-visits/today-visits.component';
 import { ProgramsContainerComponent } from './programs/programs-container.component';
-import { ProgramsTransferCareFormWizardComponent
+import {
+  ProgramsTransferCareFormWizardComponent
 } from './programs/transfer-care/transfer-care-form-wizard.component';
 import { ProgramsTransferCareGuard } from './programs/transfer-care/transfer-care.guard';
 import { ProgramsComponent } from './programs/programs.component';
 import { ProgramsTransferCareComponent } from './programs/transfer-care/transfer-care.component';
-import { ProgramsTransferCareFormWizardGuard
+import {
+  ProgramsTransferCareFormWizardGuard
 } from './programs/transfer-care/transfer-care-forms.guard';
 import { ProgramEnrollmentComponent } from './programs/program-enrollment.component';
-import { EnrollmentManagerComponent
+import {
+  EnrollmentManagerComponent
 } from '../referral-module/components/enrollment-manager/enrollment-manager.component';
-import { EnrollmentManagerFormWizardComponent
+import {
+  EnrollmentManagerFormWizardComponent
 } from '../referral-module/components/enrollment-manager/enrollment-manager-form-wizard.component';
+import { PatientDashboardResolver } from './services/patient-dashboard.resolver';
 
 export const routes = [
   {
@@ -42,11 +47,14 @@ export const routes = [
         path: 'patient/:patient_uuid',
         component: PatientDashboardComponent,
         canActivate: [
-          PatientDashboardGuard
+          // PatientDashboardGuard
         ],
         canDeactivate: [
           PatientDashboardGuard
         ],
+        resolve: {
+          patient: PatientDashboardResolver
+        },
         children: [
           { path: 'general/:program/landing-page', component: GeneralLandingPageComponent },
           {
@@ -70,14 +78,22 @@ export const routes = [
             path: 'dermatology/:program/landing-page', // CDM Landing Page
             component: PatientInfoComponent
           },
-          { path: ':programClass/:program/patient-info',
-          component: PatientInfoComponent },
-          { path: ':programClass/:program/patient-encounters',
-          component: VisitEncountersComponent },
-          { path: ':programClass/:program/patient-vitals',
-          component: PatientVitalsComponent },
-          { path: ':programClass/:program/forms',
-          component: FormsComponent },
+          {
+            path: ':programClass/:program/patient-info',
+            component: PatientInfoComponent
+          },
+          {
+            path: ':programClass/:program/patient-encounters',
+            component: VisitEncountersComponent
+          },
+          {
+            path: ':programClass/:program/patient-vitals',
+            component: PatientVitalsComponent
+          },
+          {
+            path: ':programClass/:program/forms',
+            component: FormsComponent
+          },
           {
             path: ':programClass/:program/formentry/:formUuid',
             component: FormentryComponent,

@@ -25,7 +25,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularMultiSelectModule }
 from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 import { AgGridModule } from 'ag-grid-angular';
-import { DateTimePickerModule } from 'ng2-openmrs-formentry/dist/components/date-time-picker';
+import { DateTimePickerModule } from 'ngx-openmrs-formentry';
 import { DataCacheService } from '../shared/services/data-cache.service';
 import { CacheService } from 'ionic-cache';
 import { IonicStorageModule } from '@ionic/storage';

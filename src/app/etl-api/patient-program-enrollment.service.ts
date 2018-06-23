@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, URLSearchParams } from '@angular/http';
-import { ReplaySubject } from 'rxjs/Rx';
+import { ReplaySubject } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
-import { AppSettingsService } from '../app-settings';
+import { AppSettingsService } from '../app-settings/app-settings.service';
 import { DataCacheService } from '../shared/services/data-cache.service';
 
 @Injectable()

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import * as moment from 'moment';
 import { Subject } from 'rxjs/Subject';
 
@@ -247,7 +247,7 @@ export class DifferentiatedCareReferralService {
       }
     });
 
-    return Observable.forkJoin(allprogramsObservables);
+    return forkJoin(allprogramsObservables);
   }
 
   private onReferralStepCompletion(status: any, finalSubject: Subject<any>) {

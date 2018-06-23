@@ -23,18 +23,26 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/material.font.css"
             ],
-            "scripts": []
+            "scripts": ["src/assets/rgbcolor/index.js",
+              "src/assets/StackBlur/StackBlur.js",
+              "src/assets/canvg/dist/canvg.js",
+              "src/assets/jquery-2.2.3.min.js",
+              "src/assets/slimScroll/jquery.slimscroll.js",
+              "node_modules/ion-rangeslider/js/ion.rangeSlider.min.js",
+              "src/assets/app.js",
+              "src/assets/blob-stream.js",
+              "src/assets/pdfkit.js"
+            ]
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -74,7 +82,16 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": ["src/assets/rgbcolor/index.js",
+              "src/assets/StackBlur/StackBlur.js",
+              "src/assets/canvg/dist/canvg.js",
+              "src/assets/jquery-2.2.3.min.js",
+              "src/assets/slimScroll/jquery.slimscroll.js",
+              "node_modules/ion-rangeslider/js/ion.rangeSlider.min.js",
+              "src/assets/app.js",
+              "src/assets/blob-stream.js",
+              "src/assets/pdfkit.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

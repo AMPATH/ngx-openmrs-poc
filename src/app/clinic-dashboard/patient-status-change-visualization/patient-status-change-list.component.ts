@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { flatMap } from 'rxjs/operators';
+
 import * as _ from 'lodash';
 import {
   PatientStatusVisualizationResourceService
@@ -42,8 +44,8 @@ export class PatientStatusChangeListComponent implements OnInit, OnDestroy {
   public subscription = new Subscription();
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private patientStatusResourceService: PatientStatusVisualizationResourceService,
-              private clinicDashboardCacheService: ClinicDashboardCacheService) {
+    private patientStatusResourceService: PatientStatusVisualizationResourceService,
+    private clinicDashboardCacheService: ClinicDashboardCacheService) {
   }
 
   public ngOnInit() {
@@ -118,7 +120,7 @@ export class PatientStatusChangeListComponent implements OnInit, OnDestroy {
 
   private getPatients() {
     this.triggerBusyIndicators(1, true, false);
-    this.subscription = this.clinicDashboardCacheService.getCurrentClinic().flatMap((location) => {
+    this.subscription = this.clinicDashboardCacheService.getCurrentClinic().pipe(flatMap((location) => {
       if (location) {
         this.filterParams = this.getFilters();
         this.filterParams['locationUuids'] = location;
@@ -126,7 +128,7 @@ export class PatientStatusChangeListComponent implements OnInit, OnDestroy {
           .getPatientList(this.filterParams);
       }
       return [];
-    }).subscribe((results) => {
+    })).subscribe((results) => {
       let data = this.data ? this.data.concat(results.result) : results.result;
       this.data = _.uniqBy(data, 'patient_uuid');
       this.startIndex += results.result.length;

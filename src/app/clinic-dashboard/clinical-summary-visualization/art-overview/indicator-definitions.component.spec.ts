@@ -3,7 +3,7 @@
 import {
   TestBed, async, fakeAsync, ComponentFixture, ComponentFixtureAutoDetect
 } from '@angular/core/testing';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Http, Response, Headers, BaseRequestOptions, ResponseOptions } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';

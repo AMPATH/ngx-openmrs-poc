@@ -12,7 +12,7 @@ import { NgamrsSharedModule } from '../../shared/ngamrs-shared.module';
 import { Moh731ReportBaseComponent } from './moh-731-report-base.component';
 import {
   DateTimePickerModule
-} from 'ng2-openmrs-formentry/dist/components/date-time-picker/date-time-picker.module';
+} from 'ngx-openmrs-formentry';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EtlApi } from '../../etl-api/etl-api.module';
 import { Moh731PatientListResourceService

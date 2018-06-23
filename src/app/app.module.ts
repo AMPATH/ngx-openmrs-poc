@@ -10,7 +10,7 @@ import { RouterModule, Router } from '@angular/router';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { LoginGuard } from './shared/guards/login.guard';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2Piwik } from 'angulartics2/dist/providers';
+import { Angulartics2Piwik } from 'angulartics2/piwik';
 import { NgamrsSharedModule } from './shared/ngamrs-shared.module';
 
 /*
@@ -32,8 +32,7 @@ import { CacheService } from 'ionic-cache';
 import { DataCacheService } from './shared/services/data-cache.service';
 import { FeedBackComponent } from './feedback';
 import { FormVisitTypeSearchModule } from
-    './patient-dashboard/common/form-visit-type-search/form-visit-type-search.module';
-import { BusyModule, BusyConfig } from 'angular2-busy';
+  './patient-dashboard/common/form-visit-type-search/form-visit-type-search.module';
 import { LabOrderSearchModule } from './lab-order-search/lab-order-search.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
@@ -42,6 +41,7 @@ import { OnlineTrackerService } from './online-tracker/online-tracker.service';
 import {
   DepartmentProgramsConfigService
 } from './etl-api/department-programs-config.service';
+import { BrowserModule } from '@angular/platform-browser';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -55,7 +55,7 @@ interface StoreType {
   disposeOldHosts: () => void;
 }
 export function httpClient(xhrBackend: XHRBackend, requestOptions: RequestOptions,
-                           router: Router, sessionStorageService: SessionStorageService) {
+  router: Router, sessionStorageService: SessionStorageService) {
   return new HttpClient(xhrBackend, requestOptions, router, sessionStorageService);
 }
 /**
@@ -71,39 +71,12 @@ export function httpClient(xhrBackend: XHRBackend, requestOptions: RequestOption
   ],
   imports: [ // import Angular's modules
     BrowserAnimationsModule,
+    BrowserModule,
     FormVisitTypeSearchModule,
     CommonModule,
     CookieModule.forRoot(),
     ModalModule.forRoot(),
     NgamrsSharedModule.forRoot(),
-    BusyModule.forRoot(
-      {
-        message: 'Please Wait...',
-        backdrop: true,
-        delay: 200,
-        minDuration: 600,
-        wrapperClass: 'my-class',
-        template: `<div class="ng-busy-default-wrapper">
-            <div class="ng-busy-default-sign">
-                <div class="ng-busy-default-spinner">
-                    <div class="bar1"></div>
-                    <div class="bar2"></div>
-                    <div class="bar3"></div>
-                    <div class="bar4"></div>
-                    <div class="bar5"></div>
-                    <div class="bar6"></div>
-                    <div class="bar7"></div>
-                    <div class="bar8"></div>
-                    <div class="bar9"></div>
-                    <div class="bar10"></div>
-                    <div class="bar11"></div>
-                    <div class="bar12"></div>
-                </div>
-                <div class="ng-busy-default-text">{{message}}</div>
-            </div>
-        </div>`,
-      }
-    ),
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, enableTracing: false }),

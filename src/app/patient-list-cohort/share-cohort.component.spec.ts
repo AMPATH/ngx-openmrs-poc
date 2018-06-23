@@ -2,7 +2,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, fakeAsync, ComponentFixture, tick } from '@angular/core/testing';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Http, Response, Headers, BaseRequestOptions, ResponseOptions } from '@angular/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -25,7 +25,7 @@ import { CohortResourceService } from '../openmrs-api/cohort-resource.service';
 import { ShareCohortListComponent } from './share-cohort-list.component';
 import { CohortUserResourceService } from '../etl-api/cohort-list-user-resource.service';
 import { UserSearchComponent } from './user-search.component';
-import { Ng2PaginationModule } from 'ng2-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 class DataStub {
 
@@ -79,7 +79,7 @@ describe('ShareCohortListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ NgamrsSharedModule, ConfirmDialogModule, DialogModule, CommonModule,
-        FormsModule, Ng2PaginationModule,
+        FormsModule, NgxPaginationModule,
         RouterTestingModule.withRoutes([
           { path: 'add-cohort-list', component: DummyComponent }
         ])],

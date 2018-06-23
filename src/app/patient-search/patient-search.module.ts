@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { Ng2PaginationModule } from 'ng2-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { OpenmrsApi } from '../openmrs-api/openmrs-api.module';
 
@@ -16,7 +16,7 @@ import { AppFeatureAnalytics } from '../shared/app-analytics/app-feature-analyti
         OpenmrsApi,
         FormsModule,
         CommonModule,
-        Ng2PaginationModule
+        NgxPaginationModule
     ],
     exports: [ PatientSearchComponent],
     declarations: [PatientSearchComponent, PatientSearchContainerComponent],

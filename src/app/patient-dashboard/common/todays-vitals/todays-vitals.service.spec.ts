@@ -2,7 +2,7 @@
 
 import { TestBed, async , fakeAsync } from '@angular/core/testing';
 import { DatePipe } from '@angular/common';
-import { ReplaySubject, BehaviorSubject, Observable } from 'rxjs/Rx';
+import { ReplaySubject, BehaviorSubject, Observable } from 'rxjs';
 import { Http, BaseRequestOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { AppSettingsService } from '../../../app-settings';
@@ -43,7 +43,7 @@ describe('Service: TodaysVitalsService', () => {
         }
       ]
     });
-  });
+  }));
 
   afterEach(() => {
     TestBed.resetTestingModule();

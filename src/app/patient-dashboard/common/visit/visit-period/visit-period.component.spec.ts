@@ -1,7 +1,7 @@
 import { MockBackend } from '@angular/http/testing';
 import { Http, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { TestBed, inject, async, fakeAsync, ComponentFixture, tick } from '@angular/core/testing';
-import { BehaviorSubject, Observable, Subject } from 'rxjs/Rx';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { AppFeatureAnalytics
 } from '../../../../shared/app-analytics/app-feature-analytics.service';
@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CacheService } from 'ionic-cache';
 import { DataCacheService } from '../../../../shared/services/data-cache.service';
-import { BusyModule, BusyConfig } from 'angular2-busy';
+import { NgBusyModule, BusyConfig } from 'ng-busy';
 import { PatientProgramService } from '../../../programs/patient-programs.service';
 import { RoutesProviderService
 } from '../../../../shared/dynamic-route/route-config-provider.service';
@@ -130,7 +130,7 @@ describe('Component: Visit Period Component Unit Tests', () => {
       declarations: [
         VisitPeriodComponent
       ],
-      imports: [FormsModule, NgSelectModule, BusyModule]
+      imports: [FormsModule, NgSelectModule, NgBusyModule]
     });
   });
 

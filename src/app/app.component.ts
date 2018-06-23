@@ -23,9 +23,9 @@ export class AppComponent implements OnInit {
   }
 
   public setUpAgGridLicense() {
-    if (AgGridLicence) {
-      // console.error('AG Grid License', AgGridLicence);
-      LicenseManager.setLicenseKey(AgGridLicence);
-    }
+    // if (AgGridLicence) {
+    //   // console.error('AG Grid License', AgGridLicence);
+    //   LicenseManager.setLicenseKey(AgGridLicence);
+    // }
   }
 }

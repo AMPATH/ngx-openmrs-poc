@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs';
 import { PatientsRequiringVLBaseComponent } from './patients-requiring-vl-base.component';
 import { PatientsRequiringVLReportFiltersComponent
     } from './patients-requiring-vl-report-filters.component';

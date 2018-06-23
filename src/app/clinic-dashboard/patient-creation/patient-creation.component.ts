@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, Output, OnDestroy, ViewChild, EventEmitter }
-from '@angular/core';
+import { Component, OnInit, Input, Output, OnDestroy, ViewChild, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 import * as Fuse from 'fuse.js';
-import { GridOptions, HeaderTemplateLoader } from 'ag-grid/main';
+import { GridOptions } from 'ag-grid/main';
 import 'ag-grid-enterprise/main';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -25,7 +24,7 @@ import { of } from 'rxjs/observable/of';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap';
 import {
-  MdSnackBar
+  MatSnackBar
 } from '@angular/material';
 import { SessionStorageService } from './../../utils/session-storage.service';
 
@@ -124,7 +123,7 @@ export class PatientCreationComponent implements OnInit, OnDestroy {
   public preferredIdentifier;
 
   constructor(
-    public snackbar: MdSnackBar,
+    public snackbar: MatSnackBar,
     private patientCreationService: PatientCreationService,
     private patientCreationResourceService: PatientCreationResourceService,
     private locationResourceService: LocationResourceService,

@@ -6,7 +6,7 @@ import { SessionStorageService } from '../utils/session-storage.service';
 import { Constants } from '../utils/constants';
 import { User } from '../models/user.model';
 import {  URLSearchParams } from '@angular/http';
-import { AppSettingsService } from '../app-settings';
+import { AppSettingsService } from '../app-settings/app-settings.service';
 
 @Injectable()
 export class UserService {

@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Http, Response, ResponseContentType, Headers } from '@angular/http';
+import { forkJoin } from 'rxjs';
+import { flatMap } from 'rxjs/operators';
 
 import * as moment from 'moment';
 import *  as _ from 'lodash';
@@ -11,16 +13,16 @@ import { DraftedFormsService } from './drafted-forms.service';
 import {
   FormFactory, EncounterAdapter, Form, PersonAttribuAdapter,
   HistoricalEncounterDataService
- } from 'ng2-openmrs-formentry';
+} from 'ngx-openmrs-formentry';
 import { EncounterResourceService } from '../../../openmrs-api/encounter-resource.service';
 import { FormSubmissionService } from './form-submission.service';
 import { PatientService } from '../../services/patient.service';
 import { FormDataSourceService } from './form-data-source.service';
-import { DataSources } from 'ng2-openmrs-formentry/dist/form-entry/data-sources/data-sources';
+import { DataSources } from 'ngx-openmrs-formentry';
 import { Patient } from '../../../models/patient.model';
 import { FileUploadResourceService } from '../../../etl-api/file-upload-resource.service';
 import { PatientReminderResourceService } from '../../../etl-api/patient-reminder-resource.service';
-import { Observable, Subject, Subscription } from 'rxjs/Rx';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { ConfirmationService } from 'primeng/primeng';
 import { FormentryHelperService } from './formentry-helper.service';
 
@@ -83,28 +85,28 @@ export class FormentryComponent implements OnInit, OnDestroy {
   private previousEncounters = [];
 
   constructor(private appFeatureAnalytics: AppFeatureAnalytics,
-              private route: ActivatedRoute,
-              private formFactory: FormFactory,
-              private encounterResource: EncounterResourceService,
-              private encounterAdapter: EncounterAdapter,
-              private userDefaultPropertiesService: UserDefaultPropertiesService,
-              private userService: UserService,
-              private formSubmissionService: FormSubmissionService,
-              private router: Router,
-              private patientService: PatientService,
-              private formDataSourceService: FormDataSourceService,
-              private personAttribuAdapter: PersonAttribuAdapter,
-              private dataSources: DataSources,
-              private monthlyScheduleResourceService: MonthlyScheduleResourceService,
-              private draftedFormsService: DraftedFormsService,
-              private fileUploadResourceService: FileUploadResourceService,
-              private patientReferralService: PatientReferralService,
-              private conceptResourceService: ConceptResourceService,
-              private referralsHandler: FormentryReferralsHandlerService,
-              private formentryHelperService: FormentryHelperService,
-              private patientReminderService: PatientReminderService,
-              private transferCareService: ProgramsTransferCareService,
-              private confirmationService: ConfirmationService) {
+    private route: ActivatedRoute,
+    private formFactory: FormFactory,
+    private encounterResource: EncounterResourceService,
+    private encounterAdapter: EncounterAdapter,
+    private userDefaultPropertiesService: UserDefaultPropertiesService,
+    private userService: UserService,
+    private formSubmissionService: FormSubmissionService,
+    private router: Router,
+    private patientService: PatientService,
+    private formDataSourceService: FormDataSourceService,
+    private personAttribuAdapter: PersonAttribuAdapter,
+    private dataSources: DataSources,
+    private monthlyScheduleResourceService: MonthlyScheduleResourceService,
+    private draftedFormsService: DraftedFormsService,
+    private fileUploadResourceService: FileUploadResourceService,
+    private patientReferralService: PatientReferralService,
+    private conceptResourceService: ConceptResourceService,
+    private referralsHandler: FormentryReferralsHandlerService,
+    private formentryHelperService: FormentryHelperService,
+    private patientReminderService: PatientReminderService,
+    private transferCareService: ProgramsTransferCareService,
+    private confirmationService: ConfirmationService) {
   }
 
   public ngOnInit() {
@@ -133,7 +135,7 @@ export class FormentryComponent implements OnInit, OnDestroy {
           this.confirmationService.confirm({
             header: 'Unsaved Draft Form',
             message: 'You have unsaved changes on your last form ' +
-            'that will be lost upon confirmation. Do you want to continue?',
+              'that will be lost upon confirmation. Do you want to continue?',
             rejectVisible: true,
             acceptVisible: true,
             accept: () => {
@@ -233,11 +235,11 @@ export class FormentryComponent implements OnInit, OnDestroy {
         if (this.transferCareService.isModal.getValue()) {
           this.router.navigate(['/patient-dashboard/patient/' +
             this.patient.uuid + '/general/general/landing-page'],
-            {queryParams: {completeEnrollment: true, processId: processId}});
+            { queryParams: { completeEnrollment: true, processId: processId } });
         } else {
           this.router.navigate(['/patient-dashboard/patient/' +
-          this.patient.uuid + '/general/general/programs/transfer-care/forms'],
-            {queryParams: {processId: processId}});
+            this.patient.uuid + '/general/general/programs/transfer-care/forms'],
+            { queryParams: { processId: processId } });
         }
         break;
       case 'enrollmentManager':
@@ -261,17 +263,17 @@ export class FormentryComponent implements OnInit, OnDestroy {
           let toLandingPage = params['parentComponent'] === 'landing-page';
           if (toLandingPage) {
             this.router.navigate(['/patient-dashboard/patient/' +
-            this.patient.uuid + '/general/general/landing-page']);
+              this.patient.uuid + '/general/general/landing-page']);
           } else {
             this.router.navigate(['/patient-dashboard/patient/' +
-            this.patient.uuid + '/general/general/programs/enrollment-manager']);
+              this.patient.uuid + '/general/general/programs/enrollment-manager']);
           }
         });
         break;
       case 'patientSearch':
         this.preserveFormAsDraft = false;
         this.router.navigate(['/patient-dashboard/patient-search'], {
-          queryParams: {reset: true}
+          queryParams: { reset: true }
         });
         break;
       default:
@@ -319,7 +321,7 @@ export class FormentryComponent implements OnInit, OnDestroy {
   public autoSelectReferPatientStateIfReferring() {
     let patientState = this.form.searchNodeByQuestionId('state');
     if (patientState.length > 0 && (_.isNil(this.referralEncounterType)
-        || !_.includes(['DERMRESPONSE'], this.form.schema.encounterType.name))) {
+      || !_.includes(['DERMRESPONSE'], this.form.schema.encounterType.name))) {
       // refer concept uuid
       let referConceptUuuid = '0c5565c5-45cf-40ab-aa6d-5694aeabae18';
       patientState[0].control.setValue(referConceptUuuid);
@@ -382,9 +384,9 @@ export class FormentryComponent implements OnInit, OnDestroy {
   private searchReferralConcepts(concepts) {
     let searchBatch: Array<Observable<any>> = [];
     _.each(concepts, (concept: any) => {
-        searchBatch.push(this.conceptResourceService.getConceptByUuid(concept));
+      searchBatch.push(this.conceptResourceService.getConceptByUuid(concept));
     });
-    return Observable.forkJoin(searchBatch);
+    return forkJoin(searchBatch);
   }
 
   private loadDraftedForm() {
@@ -412,23 +414,23 @@ export class FormentryComponent implements OnInit, OnDestroy {
     observableBatch.push(this.getEncounters()); // encounters [2]
 
     // forkjoin all requests
-    this.subscription = Observable.forkJoin(
+    this.subscription = forkJoin(
       observableBatch
-    ).flatMap((data) => {
+    ).pipe(flatMap((data) => {
       // now init private and public properties
       this.compiledSchemaWithEncounter = data[0] || null;
       this.patient = data[1] || null;
       this.encounter = data[2] || null;
       // now render form
       return this.patientReminderService.getPatientReminders(this.patient.person.uuid);
-    }).subscribe(
+    })).subscribe(
       (data: any) => {
         console.log(data.generatedReminders);
         let reminder = _.find(data.generatedReminders, (o: any) => {
           return o.title === 'Viral Load Reminder';
         });
         if (reminder) {
-          this.dataSources.registerDataSource('vlFormAlert', {needsVl: true}, true);
+          this.dataSources.registerDataSource('vlFormAlert', { needsVl: true }, true);
         }
         this.renderForm();
         this.isBusyIndicator(false);
@@ -644,9 +646,9 @@ export class FormentryComponent implements OnInit, OnDestroy {
         return o.title === 'Viral Load Reminder';
       });
       if (vlReminder) {
-        this.dataSources.registerDataSource('vlFormAlert', {needsVl: true}, true);
+        this.dataSources.registerDataSource('vlFormAlert', { needsVl: true }, true);
       } else {
-        this.dataSources.registerDataSource('vlFormAlert', {needsVl: false}, true);
+        this.dataSources.registerDataSource('vlFormAlert', { needsVl: false }, true);
       }
     }
 
@@ -683,8 +685,8 @@ export class FormentryComponent implements OnInit, OnDestroy {
       this.submittedOrders.orders = [];
       // submit form
       if (this.encounterUuid) {
-          this.saveEncounterOrUpdate(payloadTypes);
-      }else {
+        this.saveEncounterOrUpdate(payloadTypes);
+      } else {
         this.checkDuplicate(payloadTypes);
       }
     } else {
@@ -694,7 +696,7 @@ export class FormentryComponent implements OnInit, OnDestroy {
       this.enableSubmitBtn();
     }
 
-    }
+  }
 
   private saveEncounterOrUpdate(payloadTypes) {
     this.formSubmissionService.submitPayload(this.form, payloadTypes).subscribe(
@@ -714,35 +716,35 @@ export class FormentryComponent implements OnInit, OnDestroy {
       });
   }
   private checkDuplicate(payloadTypes) {
-     this.patientService.currentlyLoadedPatientUuid
-        .flatMap((patientUuid: string) => {
-          return this.encounterResource.getEncountersByPatientUuid(patientUuid);
-        }
-        ).flatMap((encounters) => {
-      this.previousEncounters = encounters;
-      if (this.formentryHelperService.encounterTypeFilled(encounters,
-        this.form.schema.encounterType.uuid,
-        this.extractEncounterDate()) && !this.submitDuplicate) {
-        return Observable.of(true);
-      }else {
-        return Observable.of(false);
+    this.patientService.currentlyLoadedPatientUuid
+      .pipe(flatMap((patientUuid: string) => {
+        return this.encounterResource.getEncountersByPatientUuid(patientUuid);
       }
-    }).subscribe(
-      (isDuplicate) => {
-        this.isBusyIndicator(false); // hide busy indicator
-        if (isDuplicate) {
-          this.saveDuplicate();
-        }else {
-          this.saveEncounterOrUpdate(payloadTypes);
+      ), flatMap((encounters) => {
+        this.previousEncounters = encounters;
+        if (this.formentryHelperService.encounterTypeFilled(encounters,
+          this.form.schema.encounterType.uuid,
+          this.extractEncounterDate()) && !this.submitDuplicate) {
+          return Observable.of(true);
+        } else {
+          return Observable.of(false);
         }
-      },
-      (err) => {
-        console.error('error', err);
-        this.isBusyIndicator(false); // hide busy indicator
-        this.handleFormSubmissionErrors(err);
-        this.enableSubmitBtn();
-        this.formSubmissionService.setSubmitStatus(false);
-      });
+      })).subscribe(
+        (isDuplicate) => {
+          this.isBusyIndicator(false); // hide busy indicator
+          if (isDuplicate) {
+            this.saveDuplicate();
+          } else {
+            this.saveEncounterOrUpdate(payloadTypes);
+          }
+        },
+        (err) => {
+          console.error('error', err);
+          this.isBusyIndicator(false); // hide busy indicator
+          this.handleFormSubmissionErrors(err);
+          this.enableSubmitBtn();
+          this.formSubmissionService.setSubmitStatus(false);
+        });
   }
 
   private checkFormSumittedStatus() {
@@ -796,20 +798,20 @@ export class FormentryComponent implements OnInit, OnDestroy {
   private saveDuplicate() {
     let encounterDate = this.extractEncounterDate();
     let duplicateEncounter = this.formentryHelperService
-    .getLastDuplicateEncounter(this.previousEncounters,
-      this.form.schema.encounterType.uuid, encounterDate);
+      .getLastDuplicateEncounter(this.previousEncounters,
+        this.form.schema.encounterType.uuid, encounterDate);
     let duplicateMoment = Object.assign({}, moment);
     let encounterDateMoment = moment(new Date(encounterDate));
     this.confirmationService.confirm({
       header: 'Form Duplication warning',
       key: 'duplicateWarning',
       message: `A similar form was completed on  ` +
-      `${format(duplicateEncounter.encounterDatetime , 'DD/MM/YYYY')} ` +
-      ` at ${format(duplicateEncounter.encounterDatetime, 'HH:mm')} ` +
-      `by  ${duplicateEncounter.encounterProviders[0].provider.display}
+        `${format(duplicateEncounter.encounterDatetime, 'DD/MM/YYYY')} ` +
+        ` at ${format(duplicateEncounter.encounterDatetime, 'HH:mm')} ` +
+        `by  ${duplicateEncounter.encounterProviders[0].provider.display}
       Are you sure you want to submit this encounter ` +
-      ` for the current specified date ${format(new Date(encounterDate), 'DD/MM/YYYY')} at ` +
-      `${format(new Date(encounterDate), 'HH:mm')}`,
+        ` for the current specified date ${format(new Date(encounterDate), 'DD/MM/YYYY')} at ` +
+        `${format(new Date(encounterDate), 'HH:mm')}`,
       accept: () => {
         this.submitDuplicate = true;
         this.submitForm();
@@ -850,7 +852,7 @@ export class FormentryComponent implements OnInit, OnDestroy {
         this.confirmationService.confirm({
           header: 'Process Referrals',
           message: 'You have referred the patient to ' +
-          'differentiated care program. Do you want to enroll patient to the program?',
+            'differentiated care program. Do you want to enroll patient to the program?',
           accept: () => {
             this.isBusyIndicator(true, 'Enrolling Patient to Differentiated care program ....');
             this.referralsHandler.handleFormReferals(this.patient,

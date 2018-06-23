@@ -1,4 +1,4 @@
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs';
 import * as _ from 'lodash';
 import * as Moment from 'moment';
 require('pdfmake/build/pdfmake.js');

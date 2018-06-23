@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Form } from 'ng2-openmrs-formentry';
-import { EncounterAdapter, PersonAttribuAdapter } from 'ng2-openmrs-formentry';
-import { Observable, Subject } from 'rxjs/Rx';
+import { forkJoin } from 'rxjs';
+import { Form } from 'ngx-openmrs-formentry';
+import { EncounterAdapter, PersonAttribuAdapter } from 'ngx-openmrs-formentry';
+import { Observable, Subject } from 'rxjs';
 import { EncounterResourceService } from '../../../openmrs-api/encounter-resource.service';
 import { PersonResourceService } from '../../../openmrs-api/person-resource.service';
 import { FormentryHelperService } from './formentry-helper.service';
@@ -27,7 +28,7 @@ export class FormSubmissionService {
     // create payload batch to be submitted on concurrently
     let payloadBatch: Array<Observable<any>> = this.createPayloadBatch(form, payloadTypes);
     return Observable.create((observer: Subject<any>) => {
-      return Observable.forkJoin(payloadBatch).subscribe(
+      return forkJoin(payloadBatch).subscribe(
         (responses: Array<any>) => {
           if (responses) {
             let response: any = this.processFormSubmissionResponse(responses);

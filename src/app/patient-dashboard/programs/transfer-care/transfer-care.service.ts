@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { forkJoin } from 'rxjs';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { PatientProgramResourceService } from '../../../etl-api/patient-program-resource.service';
@@ -101,7 +102,7 @@ export class ProgramsTransferCareService {
         programBatch.push(this.programService.saveUpdateProgramEnrollment(unenrollPayload));
       }
     });
-    return Observable.forkJoin(programBatch);
+    return forkJoin(programBatch);
   }
 
   public getPatientEncounters(patient: Patient): Observable<any> {
