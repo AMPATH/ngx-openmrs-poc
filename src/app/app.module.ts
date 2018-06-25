@@ -38,10 +38,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { CookieModule } from 'ngx-cookie';
 import { OnlineTrackerService } from './online-tracker/online-tracker.service';
+import { PouchdbService } from './pouchdb-service/pouchdb.service';
 import {
   DepartmentProgramsConfigService
 } from './etl-api/department-programs-config.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -81,6 +84,7 @@ export function httpClient(xhrBackend: XHRBackend, requestOptions: RequestOption
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, enableTracing: false }),
     Angulartics2Module.forRoot([Angulartics2Piwik]),
+    ServiceWorkerModule.register('/combined-worker.js', { enabled: environment.production }),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,
@@ -92,6 +96,7 @@ export function httpClient(xhrBackend: XHRBackend, requestOptions: RequestOption
     LocalStorageService,
     OnlineTrackerService,
     DepartmentProgramsConfigService,
+    PouchdbService,
     {
       provide: Http,
       useFactory: httpClient,

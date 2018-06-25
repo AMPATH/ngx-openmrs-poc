@@ -20,13 +20,17 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json",
+              "src/combined-worker.js",
+              "src/offline-db-sw.js"
             ],
             "styles": [
               "src/styles.css",
               "src/assets/css/material.font.css"
             ],
-            "scripts": ["src/assets/rgbcolor/index.js",
+            "scripts": [
+              "src/assets/rgbcolor/index.js",
               "src/assets/StackBlur/StackBlur.js",
               "src/assets/canvg/dist/canvg.js",
               "src/assets/jquery-2.2.3.min.js",
@@ -39,10 +43,12 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -51,14 +57,16 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "serviceWorker": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-openmrs-poc:build"
+            "browserTarget": "ngx-openmrs-poc:build",
+            "proxyConfig": "src/proxy.conf.js"
           },
           "configurations": {
             "production": {
@@ -82,7 +90,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": ["src/assets/rgbcolor/index.js",
+            "scripts": [
+              "src/assets/rgbcolor/index.js",
               "src/assets/StackBlur/StackBlur.js",
               "src/assets/canvg/dist/canvg.js",
               "src/assets/jquery-2.2.3.min.js",
@@ -94,7 +103,10 @@
             ],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json",
+              "src/combined-worker.js",
+              "src/offline-db-sw.js"
             ]
           }
         },
